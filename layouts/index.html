@@ -1,74 +1,103 @@
 {{define "main"}}
 <main class="container mx-auto px-4 py-10 bg-gray-100">
     <div class="w-full">
-        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Happy Holidays, Curtiss Avenue!</h2>
-        <p class="mt-4 text-gray-500">It's that time of year again.  Let's light up Curtiss from end to end</p>
-        <p class="mt-4 text-gray-500">A Willow Glen holiday tree tradition began in 1950, and 71 years later, WG Holidays is continuing that tradition. The tradition calls for a 4-6 foot tree in your front yard, placed 10 feet from the sidewalk with one white light at the top and large, multi-colored lights throughout. However, feel free to decorate your tree to your liking!</p>
+        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Happy Holidays, Curtiss Avenue!
+        </h2>
+        <p class="mt-4 text-gray-500">It's that time of year again. Let's light up Curtiss from end to end</p>
+        <p class="mt-4 text-gray-500">A Willow Glen holiday tree tradition began in 1950, and 71 years later, WG
+            Holidays is continuing that tradition. The tradition calls for a 4-6 foot tree in your front yard, placed 10
+            feet from the sidewalk with one white light at the top and large, multi-colored lights throughout. However,
+            feel free to decorate your tree to your liking!</p>
         <div class="mt-4 px-6 pb-6">
-        <ul class="divide-y-2 divide-gray-200">
-            <li class="p-1">Your block captain is Bob Briski, he'll be distributing the trees</li>
-            <li class="p-1">Trees cost $25 each</li>
-            <li class="p-1">Rebar is available for $5 each – this helps secure your tree to your lawn</li>
-            <li class="p-1">Trees will be <b>around</b> Saturday, December 4th</li>
-        </ul>
+            <ul class="divide-y-2 divide-gray-200">
+                <li class="p-1">Your block captain is Bob Briski, he'll be distributing the trees</li>
+                <li class="p-1">Trees cost $25 each</li>
+                <li class="p-1">Rebar is available for $6 each – this helps secure your tree to your lawn</li>
+                <li class="p-1">Trees will be <b>around</b> Saturday, December 4th</li>
+            </ul>
         </div>
     </div>
-<hr class="py-3" />
-<form class="w-full" name="tree" method="POST" data-netlify="true">
-    <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
-            Name
-            </label>
-            <input name="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-name" type="text">
+    <hr class="py-3" />
+    <form class="w-full" name="tree" method="POST" data-netlify="true">
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
+                    Name
+                </label>
+                <input name="name"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-name" type="text">
+            </div>
         </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-emaiil">
-            Email
-            </label>
-            <input name="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="text">
-            <p class="text-gray-600 text-xs italic">I hate spam.  I'll only email you about holiday trees.</p>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-emaiil">
+                    Email
+                </label>
+                <input name="email"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-email" type="text">
+                <p class="text-gray-600 text-xs italic">I hate spam. I'll only email you about holiday trees.</p>
+            </div>
         </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-street">
-            Street Address
-        </label>
-        <input name="street_number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-street" type="text">
-        <p class="text-gray-600 text-xs italic">We're all on Curtiss, so the number is enough.</p>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-street">
+                    Street Address
+                </label>
+                <input name="street_number"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-street" type="text">
+                <p class="text-gray-600 text-xs italic">We're all on Curtiss, so the number is enough.</p>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-street">
+                    Phone number
+                </label>
+                <input name="phone_number"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-street" type="text">
+                <p class="text-gray-600 text-xs italic">If you want me to call you when the trees arrive</p>
+            </div>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-street">
-            Phone number
-        </label>
-        <input name="phone_number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-street" type="text">
-        <p class="text-gray-600 text-xs italic">If you want me to call you when the trees arrive</p>
+        <div class="flex flex-wrap -mx-3 mb-3">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-trees">
+                    Number of trees
+                </label>
+                <input name="trees"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-trees" type="text" value="1">
+                <p class="text-gray-600 text-xs italic">$25 each</p>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-rebar">
+                    Number of rebar
+                </label>
+                <input name="rebar"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-rebar" type="text" value="1">
+                <p class="text-gray-600 text-xs italic">$6 each</p>
+            </div>
         </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-3">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-trees">
-            Number of trees
-        </label>
-        <input name="trees" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-trees" type="text" value="1">
-        <p class="text-gray-600 text-xs italic">$25 each</p>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-emaiil">
+                    Donation to Family Support Housing (if you choose)
+                </label>
+                <input name="donation"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-donation" type="text">
+                <p class="text-gray-600 text-xs italic">The Briski Family will match up to $50</p>
+            </div>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-rebar">
-            Number of rebar
-        </label>
-        <input name="rebar" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-rebar" type="text" value="1">
-        <p class="text-gray-600 text-xs italic">$5 each</p>
-        </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-3 py-3 px-3 justify-center">
-            <button class="w-full bg-green-300 hover:bg-green-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex justify-center" type="submit">
+        <div class="flex flex-wrap -mx-3 mb-3 py-3 px-3 justify-center">
+            <button
+                class="w-full bg-green-300 hover:bg-green-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex justify-center"
+                type="submit">
                 <span>Submit</span>
-              </button>
-    </div>
-  </form>
+            </button>
+        </div>
+    </form>
 </main>
 {{ end }}
