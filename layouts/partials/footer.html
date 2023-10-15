@@ -5,4 +5,9 @@
   </div>
 </footer>
 
+{{ $styles := resources.Get "css/main.css" | postCSS }}
+{{ $image := resources.Get "images/trees.png" }}
+{{ $image := $image | fingerprint | resources.PostProcess }}
+<img src="{{ $image.RelPermalink }}" alt="Willow Glen Holiday Trees" class="display:none" />
+
 <script src="https://unpkg.com/htmx.org@1.6.0"></script>
