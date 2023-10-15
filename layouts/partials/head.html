@@ -5,8 +5,9 @@
 {{ $styles := resources.Get "css/main.css" | postCSS }}
 {{ $image := resources.Get "images/trees.png" }}
 {{ $image := $image | fingerprint | resources.PostProcess }}
+<!-- ONLY FOR EMAIL
 <img src="{{ $image.RelPermalink }}" alt="Willow Glen Holiday Trees" class="mx-auto" />
-
+-->
 {{ if .Site.IsServer }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
 {{ else }}
