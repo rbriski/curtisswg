@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-    @apply text-5xl font-bold mt-12 mb-2
+body {
+    background: #fbf7ec;
+}
+
+/* A string of holiday lights hung from the top edge of the header */
+.lights {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.75rem;
+    border-top: 3px solid #1f2937;
+}
+.bulb {
+    position: relative;
+    display: block;
+    width: 12px;
+    height: 18px;
+    margin-top: 6px;
+    border-radius: 50% 50% 50% 50% / 38% 38% 62% 62%;
+    background: var(--c);
+    box-shadow: 0 0 10px 2px var(--c);
+    animation: twinkle 2.6s ease-in-out infinite;
+}
+.bulb::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 3px;
+    width: 6px;
+    height: 7px;
+    background: #4b5563;
+    border-radius: 2px 2px 0 0;
+}
+.bulb:nth-child(2n) { animation-delay: 0.9s; }
+.bulb:nth-child(3n) { animation-delay: 1.7s; }
+.bulb:nth-child(5n) { animation-delay: 0.4s; }
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+@media (max-width: 640px) {
+    .bulb:nth-child(2n) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .bulb { animation: none; }
 }
