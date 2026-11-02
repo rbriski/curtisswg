@@ -32,13 +32,39 @@ CSV_FILE = "/Users/bbriski/Downloads/WG Holiday Trees - 2025.csv"
 TEMPLATE_FILE = Path(__file__).parent / "email_template.txt"
 GMAIL_EMAIL = os.getenv('GMAIL_EMAIL')
 GMAIL_APP_PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
+
+# Block captain details for the template; kept in .env so the public repo never carries them
+CAPTAIN_NAME = os.getenv('CAPTAIN_NAME', '')
+CAPTAIN_ADDRESS = os.getenv('CAPTAIN_ADDRESS', '')
+CAPTAIN_VENMO = os.getenv('CAPTAIN_VENMO', '')
+CAPTAIN_PHONE = os.getenv('CAPTAIN_PHONE', '')
+PAYPAL_EMAIL = os.getenv('CAPTAIN_EMAIL') or GMAIL_EMAIL or ''
+CAPTAIN_FIELDS = {
+    '{paypal}': PAYPAL_EMAIL,
+    '{venmo}': CAPTAIN_VENMO,
+    '{phone_last4}': ''.join(ch for ch in CAPTAIN_PHONE if ch.isdigit())[-4:],
+    '{captain_name}': CAPTAIN_NAME,
+    '{captain_address}': CAPTAIN_ADDRESS,
+}
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 
+# This year's prices (the CSV holds last year's cost, so quotes are recomputed)
+TREE_PRICE = 30
+REBAR_PRICE = 7
+
 def load_template():
-    """Load email template from file."""
+    """Load the email template and fill in the block captain's details from .env."""
     with open(TEMPLATE_FILE, 'r') as f:
-        return f.read()
+        text = f.read()
+    missing = [key for key, value in CAPTAIN_FIELDS.items() if key in text and not value]
+    if missing:
+        print(f"ERROR: template needs {', '.join(missing)} but .env has no value for them")
+        print("Set CAPTAIN_NAME, CAPTAIN_ADDRESS, CAPTAIN_VENMO, CAPTAIN_PHONE (and CAPTAIN_EMAIL or GMAIL_EMAIL)")
+        sys.exit(1)
+    for key, value in CAPTAIN_FIELDS.items():
+        text = text.replace(key, value)
+    return text
 
 def parse_emails(email_string):
     """Parse comma-separated emails and return list."""
@@ -84,28 +110,22 @@ def read_recipients(csv_file):
     return recipients
 
 def format_last_year_details(trees, rebar, cost):
-    """Format last year's order details for the email."""
+    """Format last year's order details, with the same order priced at this year's rates."""
+    tree_count = int(trees) if trees and trees.isdigit() else 0
+    rebar_count = int(rebar) if rebar and rebar.isdigit() else 0
     details = []
-    
-    # Add trees if present
-    if trees and trees != '0':
-        tree_count = int(trees) if trees.isdigit() else 1
-        tree_text = f"{trees} tree" if tree_count == 1 else f"{trees} trees"
-        details.append(tree_text)
-    
-    # Add rebar if present
-    if rebar and rebar != '0':
-        rebar_text = f"{rebar} rebar"
-        details.append(rebar_text)
-    
-    # Build the message
-    if details:
-        items_text = " and ".join(details)
-        if cost and cost != '$0':
-            return f" ({items_text} for {cost}). If you want the same order, it'll be {cost}"
-        else:
-            return f" ({items_text})"
-    return ""
+    if tree_count:
+        details.append(f"{tree_count} tree" if tree_count == 1 else f"{tree_count} trees")
+    if rebar_count:
+        details.append(f"{rebar_count} rebar")
+    if not details:
+        return ""
+
+    items_text = " and ".join(details)
+    this_year = tree_count * TREE_PRICE + rebar_count * REBAR_PRICE
+    if cost and cost != '$0':
+        return f" ({items_text} for {cost}; the same order is ${this_year} this year)"
+    return f" ({items_text}; the same order is ${this_year} this year)"
 
 def create_email(template, recipient, sender_email, override_email=None):
     """Create email message from template and recipient data."""
@@ -136,7 +156,7 @@ def create_email(template, recipient, sender_email, override_email=None):
     else:
         msg['To'] = ', '.join(recipient['emails'])
     
-    msg['Subject'] = 'Holiday Trees 2025 - Curtiss Ave'
+    msg['Subject'] = 'Holiday Trees 2026 - Curtiss Ave'
     
     # Attach both plain text and HTML versions
     msg.attach(MIMEText(body_text, 'plain'))

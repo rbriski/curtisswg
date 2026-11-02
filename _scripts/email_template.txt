@@ -4,16 +4,16 @@ You got a holiday tree last year{last_year_details}, do you want one this year? 
 
 Here are the details:
 
-Trees: $28 each
+Trees: $30 each
 Rebar: $7 each (optional - helps secure your tree to the lawn)
 
-Delivery: Saturday, December 6th (estimate - I'll deliver the day I get them)
+Delivery: Saturday, December 5th (estimate - I'll deliver the day I get them)
 
-Deadline: Please let me know by Friday, November 7th
+Deadline: Please let me know by Friday, November 6th
 
 Payment options:
-- PayPal: rbriski@gmail.com
-- Venmo: @rbriski (last 4 digits: 2755)
+- PayPal: {paypal}
+- Venmo: {venmo} (last 4 digits: {phone_last4})
 - Check or cash works too
 
 You can also fill out the order form online at: curtisswg.com
@@ -21,6 +21,6 @@ You can also fill out the order form online at: curtisswg.com
 Just let me know if you're interested!
 
 Thanks,
-Bob Briski
-Block Captain - 1246 Curtiss
+{captain_name}
+Block Captain - {captain_address}
 
