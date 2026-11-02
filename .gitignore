@@ -1,4 +1,10 @@
+# Flyers in the repo root: the generated one carries personal contact info
+/*.pdf
+
 # Hugo default output directory
+public/
+resources/_gen/
+.hugo_build.lock
 
 ## OS Files
 # Windows
@@ -33,3 +39,6 @@ node_modules/
 .beads-credential-key
 .beads/proxieddb/
 *.gate.lock*
+
+# Local Netlify folder
+.netlify

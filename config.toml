@@ -1,3 +1,11 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
+
+# Hugo >= 0.161 runs Node tools (PostCSS) under Node's permission model, with file
+# reads limited to this project. browserslist (pulled in by autoprefixer) walks every
+# parent directory looking for browserslist-stats.json, which that sandbox rejects and
+# which aborts the build. Allow reads anywhere; child-process, worker and addon limits
+# keep their defaults. See https://gohugo.io/configuration/security/
+[security.node.permissions]
+allowRead = ['.', '*']
