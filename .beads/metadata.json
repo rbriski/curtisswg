@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "curtisswg",
+  "project_id": "0225b9e7-cdb8-42ee-b43d-b9118213511e"
+}
